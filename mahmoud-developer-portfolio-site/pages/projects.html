@@ -1,0 +1,426 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#0f0f12">
+    <meta name="description" content="Projects by Mahmoud Ghaly - Showcasing modern web development projects and applications." />
+    <title>Projects | Mahmoud Ghaly - Frontend Developer</title>
+    <!-- Favicon -->
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>👨‍💻</text></svg>">
+    <!-- Tailwind CSS via CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Custom colors and styles -->
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              dark: {
+                bg: '#0f0f12',
+                card: '#1a1a1f',
+              },
+              accent: {
+                brown: '#c6a27e',
+                purple: '#8b5cf6',
+                blue: '#38bdf8',
+              }
+            },
+            fontFamily: {
+              'sans': ['Inter', 'system-ui', 'sans-serif'],
+              'mono': ['JetBrains Mono', 'monospace'],
+            },
+            animation: {
+              'float': 'float 6s ease-in-out infinite',
+              'glow': 'glow 2s ease-in-out infinite alternate',
+              'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+            },
+            keyframes: {
+              float: {
+                '0%, 100%': { transform: 'translateY(0)' },
+                '50%': { transform: 'translateY(-20px)' },
+              },
+              glow: {
+                'from': { boxShadow: '0 0 20px rgba(139, 92, 246, 0.5)' },
+                'to': { boxShadow: '0 0 30px rgba(139, 92, 246, 0.8)' },
+              }
+            }
+          }
+        }
+      }
+    </script>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Custom CSS -->
+    <style>
+      html {
+        scroll-behavior: smooth;
+      }
+      body {
+        background-color: #0f0f12;
+        color: #f8f8f8;
+        font-family: 'Inter', sans-serif;
+        overflow-x: hidden;
+      }
+      .glass-card {
+        background: rgba(26, 26, 31, 0.7);
+        backdrop-filter: blur(10px);
+        border: 1px solid rgba(255, 255, 255, 0.05);
+      }
+      .gradient-text {
+        background: linear-gradient(90deg, #c6a27e, #8b5cf6, #38bdf8);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+      }
+      .project-card {
+        transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      }
+      .project-card:hover {
+        transform: translateY(-15px) scale(1.02);
+      }
+      .btn-primary {
+        background: linear-gradient(90deg, #8b5cf6, #38bdf8);
+        color: white;
+        transition: all 0.3s ease;
+      }
+      .btn-primary:hover {
+        background: linear-gradient(90deg, #7c3aed, #0ea5e9);
+        box-shadow: 0 10px 25px rgba(139, 92, 246, 0.4);
+      }
+      .btn-secondary {
+        background: transparent;
+        border: 2px solid #c6a27e;
+        color: #c6a27e;
+      }
+      .btn-secondary:hover {
+        background: #c6a27e;
+        color: #0f0f12;
+      }
+      section {
+        padding-top: 100px;
+        padding-bottom: 100px;
+      }
+      @media (max-width: 768px) {
+        section {
+          padding-top: 60px;
+          padding-bottom: 60px;
+        }
+      }
+    </style>
+  </head>
+  <body class="bg-dark-bg text-gray-200">
+    <!-- Navigation -->
+    <nav class="fixed top-0 left-0 w-full z-50 glass-card py-4">
+      <div class="container mx-auto px-6 flex justify-between items-center">
+        <a href="../index.html" class="text-2xl font-bold gradient-text">Mahmoud</a>
+        <div class="hidden md:flex space-x-8">
+          <a href="../index.html" class="hover:text-accent-blue transition">Home</a>
+          <a href="about.html" class="hover:text-accent-blue transition">About</a>
+          <a href="projects.html" class="text-accent-blue font-medium">Projects</a>
+          <a href="contact.html" class="hover:text-accent-blue transition">Contact</a>
+        </div>
+        <div class="md:hidden">
+          <button id="menuToggle" class="text-2xl">
+            <i class="fas fa-bars"></i>
+          </button>
+        </div>
+      </div>
+      <!-- Mobile Menu -->
+      <div id="mobileMenu" class="md:hidden absolute top-full left-0 w-full glass-card py-4 hidden">
+        <div class="container mx-auto px-6 flex flex-col space-y-4">
+          <a href="../index.html" class="py-2 hover:text-accent-blue transition">Home</a>
+          <a href="about.html" class="py-2 hover:text-accent-blue transition">About</a>
+          <a href="projects.html" class="py-2 text-accent-blue font-medium">Projects</a>
+          <a href="contact.html" class="py-2 hover:text-accent-blue transition">Contact</a>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Projects Section -->
+    <section class="pt-32 pb-20">
+      <div class="container mx-auto px-6">
+        <div class="text-center mb-16">
+          <h1 class="text-5xl md:text-6xl font-bold mb-6">
+            My <span class="gradient-text">Projects</span>
+          </h1>
+          <p class="text-xl text-gray-400 max-w-3xl mx-auto">
+            A collection of modern web applications showcasing my frontend development skills and design approach
+          </p>
+        </div>
+
+        <!-- Project Filter -->
+        <div class="flex flex-wrap justify-center gap-4 mb-12">
+          <button class="px-6 py-2 rounded-full glass-card hover:bg-accent-purple/20 transition active-filter" data-filter="all">
+            All Projects
+          </button>
+          <button class="px-6 py-2 rounded-full glass-card hover:bg-accent-purple/20 transition" data-filter="web">
+            Web Apps
+          </button>
+          <button class="px-6 py-2 rounded-full glass-card hover:bg-accent-purple/20 transition" data-filter="ui">
+            UI/UX
+          </button>
+          <button class="px-6 py-2 rounded-full glass-card hover:bg-accent-purple/20 transition" data-filter="responsive">
+            Responsive
+          </button>
+        </div>
+
+        <!-- Projects Grid -->
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <!-- Project 1 -->
+          <div class="project-card glass-card rounded-2xl overflow-hidden" data-category="web">
+            <div class="h-48 bg-gradient-to-r from-accent-purple/20 to-accent-blue/20 flex items-center justify-center">
+              <div class="text-6xl">🌐</div>
+            </div>
+            <div class="p-6">
+              <div class="flex justify-between items-start mb-4">
+                <h3 class="text-2xl font-bold">Modern Dashboard</h3>
+                <span class="px-3 py-1 rounded-full text-xs bg-accent-purple/20 text-accent-purple">Web App</span>
+              </div>
+              <p class="text-gray-400 mb-6">
+                A comprehensive admin dashboard with real-time analytics, data visualization, and user management features. Built with React and Tailwind CSS.
+              </p>
+              <div class="flex flex-wrap gap-2 mb-6">
+                <span class="px-3 py-1 rounded-full text-xs glass-card">React</span>
+                <span class="px-3 py-1 rounded-full text-xs glass-card">Tailwind</span>
+                <span class="px-3 py-1 rounded-full text-xs glass-card">Chart.js</span>
+                <span class="px-3 py-1 rounded-full text-xs glass-card">API Integration</span>
+              </div>
+              <div class="flex space-x-4">
+                <a href="#" class="btn-primary px-6 py-2 rounded-full text-sm font-medium flex-1 text-center">
+                  <i class="fas fa-external-link-alt mr-2"></i> Live Demo
+                </a>
+                <a href="#" class="btn-secondary px-6 py-2 rounded-full text-sm font-medium flex-1 text-center">
+                  <i class="fab fa-github mr-2"></i> GitHub
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Project 2 -->
+          <div class="project-card glass-card rounded-2xl overflow-hidden" data-category="ui">
+            <div class="h-48 bg-gradient-to-r from-accent-brown/20 to-accent-purple/20 flex items-center justify-center">
+              <div class="text-6xl">🎨</div>
+            </div>
+            <div class="p-6">
+              <div class="flex justify-between items-start mb-4">
+                <h3 class="text-2xl font-bold">E-Commerce UI</h3>
+                <span class="px-3 py-1 rounded-full text-xs bg-accent-brown/20 text-accent-brown">UI/UX</span>
+              </div>
+              <p class="text-gray-400 mb-6">
+                Complete e-commerce user interface with product filtering, cart functionality, and checkout process. Focus on responsive design and smooth animations.
+              </p>
+              <div class="flex flex-wrap gap-2 mb-6">
+                <span class="px-3 py-1 rounded-full text-xs glass-card">HTML/CSS</span>
+                <span class="px-3 py-1 rounded-full text-xs glass-card">JavaScript</span>
+                <span class="px-3 py-1 rounded-full text-xs glass-card">GSAP</span>
+                <span class="px-3 py-1 rounded-full text-xs glass-card">Responsive</span>
+              </div>
+              <div class="flex space-x-4">
+                <a href="#" class="btn-primary px-6 py-2 rounded-full text-sm font-medium flex-1 text-center">
+                  <i class="fas fa-external-link-alt mr-2"></i> Live Demo
+                </a>
+                <a href="#" class="btn-secondary px-6 py-2 rounded-full text-sm font-medium flex-1 text-center">
+                  <i class="fab fa-github mr-2"></i> GitHub
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Project 3 -->
+          <div class="project-card glass-card rounded-2xl overflow-hidden" data-category="responsive">
+            <div class="h-48 bg-gradient-to-r from-accent-blue/20 to-accent-purple/20 flex items-center justify-center">
+              <div class="text-6xl">📱</div>
+            </div>
+            <div class="p-6">
+              <div class="flex justify-between items-start mb-4">
+                <h3 class="text-2xl font-bold">Portfolio Website</h3>
+                <span class="px-3 py-1 rounded-full text-xs bg-accent-blue/20 text-accent-blue">Responsive</span>
+              </div>
+              <p class="text-gray-400 mb-6">
+                Fully responsive portfolio website with modern dark theme, smooth animations, and mobile-first approach. Showcases frontend development skills.
+              </p>
+              <div class="flex flex-wrap gap-2 mb-6">
+                <span class="px-3 py-1 rounded-full text-xs glass-card">HTML/CSS</span>
+                <span class="px-3 py-1 rounded-full text-xs glass-card">JavaScript</span>
+                <span class="px-3 py-1 rounded-full text-xs glass-card">Tailwind</span>
+                <span class="px-3 py-1 rounded-full text-xs glass-card">Mobile-First</span>
+              </div>
+              <div class="flex space-x-4">
+                <a href="#" class="btn-primary px-6 py-2 rounded-full text-sm font-medium flex-1 text-center">
+                  <i class="fas fa-external-link-alt mr-2"></i> Live Demo
+                </a>
+                <a href="#" class="btn-secondary px-6 py-2 rounded-full text-sm font-medium flex-1 text-center">
+                  <i class="fab fa-github mr-2"></i> GitHub
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Project 4 -->
+          <div class="project-card glass-card rounded-2xl overflow-hidden" data-category="web">
+            <div class="h-48 bg-gradient-to-r from-accent-purple/20 to-accent-brown/20 flex items-center justify-center">
+              <div class="text-6xl">📊</div>
+            </div>
+            <div class="p-6">
+              <div class="flex justify-between items-start mb-4">
+                <h3 class="text-2xl font-bold">Weather App</h3>
+                <span class="px-3 py-1 rounded-full text-xs bg-accent-purple/20 text-accent-purple">Web App</span>
+              </div>
+              <p class="text-gray-400 mb-6">
+                Real-time weather application with location detection, 5-day forecast, and interactive charts. Integrates with OpenWeatherMap API.
+              </p>
+              <div class="flex flex-wrap gap-2 mb-6">
+                <span class="px-3 py-1 rounded-full text-xs glass-card">React</span>
+                <span class="px-3 py-1 rounded-full text-xs glass-card">API</span>
+                <span class="px-3 py-1 rounded-full text-xs glass-card">Chart.js</span>
+                <span class="px-3 py-1 rounded-full text-xs glass-card">Geolocation</span>
+              </div>
+              <div class="flex space-x-4">
+                <a href="#" class="btn-primary px-6 py-2 rounded-full text-sm font-medium flex-1 text-center">
+                  <i class="fas fa-external-link-alt mr-2"></i> Live Demo
+                </a>
+                <a href="#" class="btn-secondary px-6 py-2 rounded-full text-sm font-medium flex-1 text-center">
+                  <i class="fab fa-github mr-2"></i> GitHub
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Project 5 -->
+          <div class="project-card glass-card rounded-2xl overflow-hidden" data-category="ui">
+            <div class="h-48 bg-gradient-to-r from-accent-brown/20 to-accent-blue/20 flex items-center justify-center">
+              <div class="text-6xl">💬</div>
+            </div>
+            <div class="p-6">
+              <div class="flex justify-between items-start mb-4">
+                <h3 class="text-2xl font-bold">Chat Application</h3>
+                <span class="px-3 py-1 rounded-full text-xs bg-accent-brown/20 text-accent-brown">UI/UX</span>
+              </div>
+              <p class="text-gray-400 mb-6">
+                Real-time chat interface with message threading, file sharing, and user presence indicators. Clean, intuitive design with focus on user experience.
+              </p>
+              <div class="flex flex-wrap gap-2 mb-6">
+                <span class="px-3 py-1 rounded-full text-xs glass-card">React</span>
+                <span class="px-3 py-1 rounded-full text-xs glass-card">Socket.io</span>
+                <span class="px-3 py-1 rounded-full text-xs glass-card">Tailwind</span>
+                <span class="px-3 py-1 rounded-full text-xs glass-card">Real-time</span>
+              </div>
+              <div class="flex space-x-4">
+                <a href="#" class="btn-primary px-6 py-2 rounded-full text-sm font-medium flex-1 text-center">
+                  <i class="fas fa-external-link-alt mr-2"></i> Live Demo
+                </a>
+                <a href="#" class="btn-secondary px-6 py-2 rounded-full text-sm font-medium flex-1 text-center">
+                  <i class="fab fa-github mr-2"></i> GitHub
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Project 6 -->
+          <div class="project-card glass-card rounded-2xl overflow-hidden" data-category="responsive">
+            <div class="h-48 bg-gradient-to-r from-accent-blue/20 to-accent-brown/20 flex items-center justify-center">
+              <div class="text-6xl">🎵</div>
+            </div>
+            <div class="p-6">
+              <div class="flex justify-between items-start mb-4">
+                <h3 class="text-2xl font-bold">Music Player</h3>
+                <span class="px-3 py-1 rounded-full text-xs bg-accent-blue/20 text-accent-blue">Responsive</span>
+              </div>
+              <p class="text-gray-400 mb-6">
+                Sleek music player interface with playlist management, audio visualization, and cross-platform compatibility. Fully responsive design.
+              </p>
+              <div class="flex flex-wrap gap-2 mb-6">
+                <span class="px-3 py-1 rounded-full text-xs glass-card">HTML/CSS</span>
+                <span class="px-3 py-1 rounded-full text-xs glass-card">JavaScript</span>
+                <span class="px-3 py-1 rounded-full text-xs glass-card">Web Audio API</span>
+                <span class="px-3 py-1 rounded-full text-xs glass-card">Responsive</span>
+              </div>
+              <div class="flex space-x-4">
+                <a href="#" class="btn-primary px-6 py-2 rounded-full text-sm font-medium flex-1 text-center">
+                  <i class="fas fa-external-link-alt mr-2"></i> Live Demo
+                </a>
+                <a href="#" class="btn-secondary px-6 py-2 rounded-full text-sm font-medium flex-1 text-center">
+                  <i class="fab fa-github mr-2"></i> GitHub
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="glass-card py-8 border-t border-gray-800">
+      <div class="container mx-auto px-6">
+        <div class="flex flex-col md:flex-row justify-between items-center">
+          <div class="mb-6 md:mb-0">
+            <a href="../index.html" class="text-2xl font-bold gradient-text">Mahmoud Ghaly</a>
+            <p class="text-gray-400 mt-2">Frontend Developer</p>
+          </div>
+          <div class="flex space-x-6">
+            <a href="../index.html" class="text-gray-400 hover:text-accent-blue transition">Home</a>
+            <a href="about.html" class="text-gray-400 hover:text-accent-blue transition">About</a>
+            <a href="projects.html" class="text-accent-blue">Projects</a>
+            <a href="contact.html" class="text-gray-400 hover:text-accent-blue transition">Contact</a>
+          </div>
+        </div>
+        <div class="text-center text-gray-500 text-sm mt-8 pt-6 border-t border-gray-800">
+          <p>&copy; 2025 Mahmoud Ghaly. All rights reserved.</p>
+        </div>
+      </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script>
+      // Mobile menu toggle
+      const menuToggle = document.getElementById('menuToggle');
+      const mobileMenu = document.getElementById('mobileMenu');
+      
+      if (menuToggle && mobileMenu) {
+        menuToggle.addEventListener('click', () => {
+          mobileMenu.classList.toggle('hidden');
+        });
+        
+        // Close menu when clicking outside
+        document.addEventListener('click', (e) => {
+          if (!menuToggle.contains(e.target) && !mobileMenu.contains(e.target)) {
+            mobileMenu.classList.add('hidden');
+          }
+        });
+      }
+
+      // Project filter functionality
+      const filterButtons = document.querySelectorAll('[data-filter]');
+      const projectCards = document.querySelectorAll('.project-card');
+      
+      filterButtons.forEach(button => {
+        button.addEventListener('click', () => {
+          // Update active button
+          filterButtons.forEach(btn => {
+            btn.classList.remove('bg-accent-purple/20', 'text-accent-purple');
+            btn.classList.add('glass-card');
+          });
+          
+          button.classList.remove('glass-card');
+          button.classList.add('bg-accent-purple/20', 'text-accent-purple');
+          
+          // Filter projects
+          const filter = button.getAttribute('data-filter');
+          
+          projectCards.forEach(card => {
+            if (filter === 'all' || card.getAttribute('data-category') === filter) {
+              card.style.display = 'block';
+            } else {
+              card.style.display = 'none';
+            }
+          });
+        });
+      });
+    </script>
+  </body>
+</html>

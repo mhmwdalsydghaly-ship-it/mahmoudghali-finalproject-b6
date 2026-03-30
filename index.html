@@ -1,0 +1,354 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#0f0f12">
+    <meta name="description" content="Mahmoud Ghaly - Frontend Developer specializing in modern web interfaces and responsive design. Portfolio website showcasing skills and projects." />
+    <title>Mahmoud Ghaly | Frontend Developer</title>
+    <!-- Favicon -->
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>👨‍💻</text></svg>">
+    <!-- Tailwind CSS via CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Custom colors and styles -->
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              dark: {
+                bg: '#0f0f12',
+                card: '#1a1a1f',
+              },
+              accent: {
+                brown: '#c6a27e',
+                purple: '#8b5cf6',
+                blue: '#38bdf8',
+              }
+            },
+            fontFamily: {
+              'sans': ['Inter', 'system-ui', 'sans-serif'],
+              'mono': ['JetBrains Mono', 'monospace'],
+            },
+            animation: {
+              'float': 'float 6s ease-in-out infinite',
+              'glow': 'glow 2s ease-in-out infinite alternate',
+              'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+            },
+            keyframes: {
+              float: {
+                '0%, 100%': { transform: 'translateY(0)' },
+                '50%': { transform: 'translateY(-20px)' },
+              },
+              glow: {
+                'from': { boxShadow: '0 0 20px rgba(139, 92, 246, 0.5)' },
+                'to': { boxShadow: '0 0 30px rgba(139, 92, 246, 0.8)' },
+              }
+            }
+          }
+        }
+      }
+    </script>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Custom CSS -->
+    <style>
+      html {
+        scroll-behavior: smooth;
+      }
+      body {
+        background-color: #0f0f12;
+        color: #f8f8f8;
+        font-family: 'Inter', sans-serif;
+        overflow-x: hidden;
+      }
+      .glass-card {
+        background: rgba(26, 26, 31, 0.7);
+        backdrop-filter: blur(10px);
+        border: 1px solid rgba(255, 255, 255, 0.05);
+      }
+      .gradient-text {
+        background: linear-gradient(90deg, #c6a27e, #8b5cf6, #38bdf8);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+      }
+      .gradient-border {
+        position: relative;
+        border: 2px solid transparent;
+        background: linear-gradient(#0f0f12, #0f0f12) padding-box,
+                    linear-gradient(90deg, #c6a27e, #8b5cf6, #38bdf8) border-box;
+      }
+      .btn-primary {
+        background: linear-gradient(90deg, #8b5cf6, #38bdf8);
+        color: white;
+        transition: all 0.3s ease;
+      }
+      .btn-primary:hover {
+        background: linear-gradient(90deg, #7c3aed, #0ea5e9);
+        box-shadow: 0 10px 25px rgba(139, 92, 246, 0.4);
+      }
+      .btn-secondary {
+        background: transparent;
+        border: 2px solid #c6a27e;
+        color: #c6a27e;
+      }
+      .btn-secondary:hover {
+        background: #c6a27e;
+        color: #0f0f12;
+      }
+      .skill-card:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+      }
+      .hero-height {
+        min-height: 100vh;
+      }
+      section {
+        padding-top: 100px;
+        padding-bottom: 100px;
+      }
+      @media (max-width: 768px) {
+        .hero-height {
+          min-height: 90vh;
+        }
+        section {
+          padding-top: 60px;
+          padding-bottom: 60px;
+        }
+      }
+    </style>
+  </head>
+  <body class="bg-dark-bg text-gray-200">
+    <!-- Navigation -->
+    <nav class="fixed top-0 left-0 w-full z-50 glass-card py-4">
+      <div class="container mx-auto px-6 flex justify-between items-center">
+        <a href="index.html" class="text-2xl font-bold gradient-text">Mahmoud</a>
+        <div class="hidden md:flex space-x-8">
+          <a href="index.html" class="text-accent-blue font-medium">Home</a>
+          <a href="pages/about.html" class="hover:text-accent-blue transition">About</a>
+          <a href="pages/projects.html" class="hover:text-accent-blue transition">Projects</a>
+          <a href="pages/contact.html" class="hover:text-accent-blue transition">Contact</a>
+        </div>
+        <div class="md:hidden">
+          <button id="menuToggle" class="text-2xl">
+            <i class="fas fa-bars"></i>
+          </button>
+        </div>
+      </div>
+      <!-- Mobile Menu -->
+      <div id="mobileMenu" class="md:hidden absolute top-full left-0 w-full glass-card py-4 hidden">
+        <div class="container mx-auto px-6 flex flex-col space-y-4">
+          <a href="index.html" class="py-2 text-accent-blue font-medium">Home</a>
+          <a href="pages/about.html" class="py-2 hover:text-accent-blue transition">About</a>
+          <a href="pages/projects.html" class="py-2 hover:text-accent-blue transition">Projects</a>
+          <a href="pages/contact.html" class="py-2 hover:text-accent-blue transition">Contact</a>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero-height flex items-center">
+      <div class="container mx-auto px-6">
+        <div class="flex flex-col md:flex-row items-center justify-between">
+          <div class="md:w-1/2 mb-12 md:mb-0">
+            <h1 class="text-5xl md:text-7xl font-bold mb-6">
+              Hi, I'm <span class="gradient-text">Mahmoud Ghaly</span> — <br>
+              <span class="text-white">Frontend Developer</span>
+            </h1>
+            <p class="text-xl text-gray-400 mb-10 max-w-2xl">
+              Crafting modern, responsive web experiences with clean code and pixel-perfect design. Passionate about turning ideas into interactive digital solutions.
+            </p>
+            <div class="flex flex-wrap gap-4">
+              <a href="pages/projects.html" class="btn-primary px-8 py-3 rounded-full text-lg font-medium">
+                View Projects <i class="fas fa-arrow-right ml-2"></i>
+              </a>
+              <a href="pages/contact.html" class="btn-secondary px-8 py-3 rounded-full text-lg font-medium">
+                Contact Me <i class="fas fa-envelope ml-2"></i>
+              </a>
+            </div>
+          </div>
+          <div class="md:w-1/2 flex justify-center">
+            <div class="relative w-80 h-80 md:w-96 md:h-96">
+              <div class="absolute inset-0 rounded-full gradient-border animate-glow"></div>
+              <div class="absolute inset-4 rounded-full bg-dark-card flex items-center justify-center">
+                <div class="text-9xl animate-float">👨‍💻</div>
+              </div>
+              <div class="absolute -top-4 -right-4 w-32 h-32 bg-accent-purple/20 rounded-full blur-2xl"></div>
+              <div class="absolute -bottom-4 -left-4 w-24 h-24 bg-accent-blue/20 rounded-full blur-2xl"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Featured Skills -->
+    <section class="py-20">
+      <div class="container mx-auto px-6">
+        <div class="text-center mb-16">
+          <h2 class="text-4xl md:text-5xl font-bold mb-6">
+            My <span class="gradient-text">Expertise</span>
+          </h2>
+          <p class="text-xl text-gray-400 max-w-3xl mx-auto">
+            Specializing in modern frontend technologies and best practices to deliver exceptional user experiences.
+          </p>
+        </div>
+        <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6">
+          <div class="glass-card rounded-2xl p-6 text-center skill-card">
+            <div class="text-4xl mb-4 text-accent-purple">
+              <i class="fab fa-html5"></i>
+            </div>
+            <h3 class="text-xl font-bold">HTML5</h3>
+          </div>
+          <div class="glass-card rounded-2xl p-6 text-center skill-card">
+            <div class="text-4xl mb-4 text-accent-blue">
+              <i class="fab fa-css3-alt"></i>
+            </div>
+            <h3 class="text-xl font-bold">CSS3</h3>
+          </div>
+          <div class="glass-card rounded-2xl p-6 text-center skill-card">
+            <div class="text-4xl mb-4 text-accent-brown">
+              <i class="fab fa-js"></i>
+            </div>
+            <h3 class="text-xl font-bold">JavaScript</h3>
+          </div>
+          <div class="glass-card rounded-2xl p-6 text-center skill-card">
+            <div class="text-4xl mb-4 text-accent-purple">
+              <i class="fab fa-react"></i>
+            </div>
+            <h3 class="text-xl font-bold">React</h3>
+          </div>
+          <div class="glass-card rounded-2xl p-6 text-center skill-card">
+            <div class="text-4xl mb-4 text-accent-blue">
+              <i class="fab fa-vuejs"></i>
+            </div>
+            <h3 class="text-xl font-bold">Vue.js</h3>
+          </div>
+          <div class="glass-card rounded-2xl p-6 text-center skill-card">
+            <div class="text-4xl mb-4 text-accent-brown">
+              <i class="fas fa-paint-brush"></i>
+            </div>
+            <h3 class="text-xl font-bold">UI/UX</h3>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Featured Projects -->
+    <section class="py-20 bg-dark-card/30">
+      <div class="container mx-auto px-6">
+        <div class="text-center mb-16">
+          <h2 class="text-4xl md:text-5xl font-bold mb-6">
+            Featured <span class="gradient-text">Projects</span>
+          </h2>
+          <p class="text-xl text-gray-400 max-w-3xl mx-auto">
+            A selection of my recent work showcasing modern web development techniques and design principles.
+          </p>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
+          <!-- Project 1 -->
+          <div class="glass-card rounded-2xl overflow-hidden hover:transform hover:scale-[1.02] transition-all duration-300">
+            <div class="h-48 bg-gradient-to-r from-accent-purple/20 to-accent-blue/20 flex items-center justify-center">
+              <div class="text-6xl">🌐</div>
+            </div>
+            <div class="p-6">
+              <h3 class="text-2xl font-bold mb-3">Modern Dashboard</h3>
+              <p class="text-gray-400 mb-6">
+                Comprehensive admin dashboard with real-time analytics and data visualization.
+              </p>
+              <div class="flex space-x-4">
+                <a href="pages/projects.html" class="btn-primary px-6 py-2 rounded-full text-sm font-medium">
+                  View Details
+                </a>
+              </div>
+            </div>
+          </div>
+          <!-- Project 2 -->
+          <div class="glass-card rounded-2xl overflow-hidden hover:transform hover:scale-[1.02] transition-all duration-300">
+            <div class="h-48 bg-gradient-to-r from-accent-brown/20 to-accent-purple/20 flex items-center justify-center">
+              <div class="text-6xl">🎨</div>
+            </div>
+            <div class="p-6">
+              <h3 class="text-2xl font-bold mb-3">E-Commerce UI</h3>
+              <p class="text-gray-400 mb-6">
+                Complete e-commerce interface with advanced filtering and smooth animations.
+              </p>
+              <div class="flex space-x-4">
+                <a href="pages/projects.html" class="btn-primary px-6 py-2 rounded-full text-sm font-medium">
+                  View Details
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="text-center">
+          <a href="pages/projects.html" class="btn-secondary px-8 py-3 rounded-full text-lg font-medium inline-flex items-center">
+            View All Projects <i class="fas fa-external-link-alt ml-2"></i>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Call to Action -->
+    <section class="py-20">
+      <div class="container mx-auto px-6">
+        <div class="glass-card rounded-3xl p-12 text-center gradient-border">
+          <h2 class="text-4xl md:text-5xl font-bold mb-6">
+            Let's Build Something <span class="gradient-text">Amazing</span>
+          </h2>
+          <p class="text-xl text-gray-400 max-w-2xl mx-auto mb-10">
+            Have a project in mind or want to collaborate? I'd love to hear about your ideas and how we can work together.
+          </p>
+          <a href="pages/contact.html" class="btn-primary px-10 py-4 rounded-full text-xl font-medium inline-flex items-center">
+            Get In Touch <i class="fas fa-paper-plane ml-3"></i>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="glass-card py-8 border-t border-gray-800">
+      <div class="container mx-auto px-6">
+        <div class="flex flex-col md:flex-row justify-between items-center">
+          <div class="mb-6 md:mb-0">
+            <a href="#" class="text-2xl font-bold gradient-text">Mahmoud Ghaly</a>
+            <p class="text-gray-400 mt-2">Frontend Developer</p>
+          </div>
+          <div class="flex space-x-6">
+          <a href="index.html" class="text-accent-blue">Home</a>
+          <a href="pages/about.html" class="text-gray-400 hover:text-accent-blue transition">About</a>
+          <a href="pages/projects.html" class="text-gray-400 hover:text-accent-blue transition">Projects</a>
+          <a href="pages/contact.html" class="text-gray-400 hover:text-accent-blue transition">Contact</a>
+          </div>
+        </div>
+        <div class="text-center text-gray-500 text-sm mt-8 pt-6 border-t border-gray-800">
+          <p>&copy; 2025 Mahmoud Ghaly. All rights reserved.</p>
+        </div>
+      </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script>
+      // Mobile menu toggle
+      const menuToggle = document.getElementById('menuToggle');
+      const mobileMenu = document.getElementById('mobileMenu');
+      
+      if (menuToggle && mobileMenu) {
+        menuToggle.addEventListener('click', () => {
+          mobileMenu.classList.toggle('hidden');
+        });
+        
+        // Close menu when clicking outside
+        document.addEventListener('click', (e) => {
+          if (!menuToggle.contains(e.target) && !mobileMenu.contains(e.target)) {
+            mobileMenu.classList.add('hidden');
+          }
+        });
+      }
+    </script>
+  </body>
+</html>
